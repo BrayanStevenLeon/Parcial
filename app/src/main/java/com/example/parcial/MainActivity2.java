@@ -16,11 +16,12 @@ import org.w3c.dom.Text;
 
 public class MainActivity2 extends AppCompatActivity {
     private TextView tvResultado;
-    private Button btMultiplicar;
+    private Button btCalcular;
     private EditText txtNro1;
     private EditText txtNro2;
 
-
+    private int precioTomate = 1000;
+    private int precioCebolla = 1500;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,20 +30,25 @@ public class MainActivity2 extends AppCompatActivity {
         txtNro1 = findViewById(R.id.txtNro1);
         txtNro2 = findViewById(R.id.txtNro2);
         tvResultado = findViewById(R.id.tvResultado);
-        btMultiplicar = findViewById(R.id.btMultiplicar);
+        btCalcular = findViewById(R.id.btMultiplicar);
 
-        btMultiplicar.setOnClickListener(new View.OnClickListener() {
+        btCalcular.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                multiplicar();
+                calcularTotal();
             }
         });
     }
-    public void multiplicar(){
-        int valor1 = Integer.parseInt(txtNro1.getText().toString());
-        int valor2 = Integer.parseInt(txtNro2.getText().toString());
-        tvResultado.setText(String.valueOf(valor1*valor2));
-    }
+    public void calcularTotal() {
+        int cantidadTomate = Integer.parseInt(txtNro1.getText().toString());
+        int cantidadCebolla = Integer.parseInt(txtNro2.getText().toString());
 
+        int totalTomate = cantidadTomate * precioTomate;
+        int totalCebolla = cantidadCebolla * precioCebolla;
+
+        int total = totalTomate + totalCebolla;
+
+        tvResultado.setText(String.valueOf(total));
+    }
 }
 
